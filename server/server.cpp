@@ -15458,7 +15458,7 @@ static void leaderDied( LiveObject *inLeader ) {
         LiveObject *fittestFollower = NULL;
         double fittestFitness = 0;
         
-        LiveObject *backupOption = null;
+        LiveObject *backupOption = NULL;
         
         for( int i=0; i<directFollowers.size(); i++ ) {
             LiveObject *otherPlayer = directFollowers.getElementDirect( i );
