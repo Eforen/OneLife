@@ -15462,7 +15462,7 @@ static void leaderDied( LiveObject *inLeader ) {
         
         for( int i=0; i<directFollowers.size(); i++ ) {
             LiveObject *otherPlayer = directFollowers.getElementDirect( i );
-            if(backupOption == null) backupOption = otherPlayer;
+            if(backupOption == NULL) backupOption = otherPlayer;
             if( otherPlayer->fitnessScore > fittestFitness ) {
                 
                 fittestFitness = otherPlayer->fitnessScore;
