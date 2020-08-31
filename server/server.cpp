@@ -15458,9 +15458,11 @@ static void leaderDied( LiveObject *inLeader ) {
         LiveObject *fittestFollower = NULL;
         double fittestFitness = 0;
         
+        LiveObject *backupOption = null;
+        
         for( int i=0; i<directFollowers.size(); i++ ) {
             LiveObject *otherPlayer = directFollowers.getElementDirect( i );
-            
+            if(backupOption == null) backupOption = otherPlayer;
             if( otherPlayer->fitnessScore > fittestFitness ) {
                 
                 fittestFitness = otherPlayer->fitnessScore;
@@ -15468,7 +15470,13 @@ static void leaderDied( LiveObject *inLeader ) {
                 }
             }
         
-        inLeader->followingID = fittestFollower->id;
+        if (fittestFollower == NULL)
+        {
+            if(backupOption == NULL) return;
+            inLeader->followingID = backupOption->id;
+        } else {
+            inLeader->followingID = fittestFollower->id;
+        }
         
         // they become top of tree, following no one
         fittestFollower->followingID = -1;
